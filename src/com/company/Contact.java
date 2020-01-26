@@ -3,16 +3,16 @@ package com.company;
 public class Contact {
     private String firstName;
     private String name;
-    private String phone;
+    private Phone phone;
     private String email;
 
     public Contact(){
     }
-    public Contact(String name, String phone){
+    public Contact(String name, Phone phone){
         this.name = name;
         this.phone = phone;
     }
-    public Contact(String firstName, String name, String phone, String email){
+    public Contact(String firstName, String name, Phone phone, String email){
         this.firstName = firstName;
         this.name = name;
         this.phone = phone;
@@ -32,10 +32,10 @@ public class Contact {
         this.name = name;
     }
     public String getPhone(){
-        return phone;
+        return phone.getPhoneNumber();
     }
-    public void setPhone(String phone){
-        this.phone = phone;
+    public void setPhone(Phone phone){
+        this.phone= phone;
     }
     public String getEmail(){
         return email;
