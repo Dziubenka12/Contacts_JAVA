@@ -16,7 +16,6 @@ public enum Operator {
     public String getTitle() {
         return title;
     }
-
     public String getCode() {
         return code;
     }

@@ -14,10 +14,14 @@ public class Main {
         c1.setName("Olga");
         Phone coun = new HomePhone(OperatorCountry.Minsk,"3619134");
 
+        Contact Anatoli = new Contact("Dziubenko", "Anatoli", new MobPhone("+375", Operator.A1, "7611521"),"dziubenka12@gmail.com", new Address("Belarus", "Minsk", "Belskogo", 20));
+
+
         ArrayList<Contact> Contacts= new ArrayList<>();
         Contacts.add(c1);
         //Contacts.add(c2);
         System.out.println(mob.getPhoneNumber());
         System.out.println(coun.getPhoneNumber());
+        System.out.println(Anatoli.toString());
     }
 }
