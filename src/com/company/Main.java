@@ -14,7 +14,7 @@ public class Main {
         c1.setName("Olga");
         Phone coun = new HomePhone(OperatorCountry.Minsk,"3619134");
 
-        Contact Anatoli = new Contact("Dziubenko", "Anatoli", new MobPhone("+375", Operator.A1, "7611521"),"dziubenka12@gmail.com", new Address("Belarus", "Minsk", "Belskogo", 20));
+        Contact Anatoli = new Contact("Dziubenko", "Anatoli", new MobPhone("+375", Operator.A1, "7611521"),"dziubenka12@gmail.com", new Address(Country.Belarus, "Minsk", "Belskogo", 20, 37));
 
 
         ArrayList<Contact> Contacts= new ArrayList<>();
