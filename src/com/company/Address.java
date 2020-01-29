@@ -51,7 +51,7 @@ public class Address {
         this.apartment = apartment;
     }
 
-    public String getAddressFull(){
-        return country + " " + city + " " + street + " " + house + " " + apartment;
+    public String toString(){
+        return " \"address\": {" + " \"country\"" + " \"" + country + "\"," + " " + "\"city\":" + " \"" + city + "\"," + " " + "\"street\":" + " \"" + street + "\"," + " " + "\"house\":" + " \"" + house + "\"," + " " + "\"apartment\":" + " \"" + apartment + "\"}";
     }
 }

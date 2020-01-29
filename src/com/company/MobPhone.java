@@ -13,6 +13,6 @@ public class MobPhone implements Phone {
 
     @Override
     public String getPhoneNumber() {
-        return countryCode + "-(" + operator.getCode() + ")-" + mobPhone;
+        return " \"phones\":[ {" + "\"countryCode\": " + countryCode + "\"," + "\" operator\":" + " " + operator.getCode() + "," + "\"mobPhone\":" + " \"" + mobPhone + "\"}],";
     }
 }

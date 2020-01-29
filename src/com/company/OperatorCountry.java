@@ -21,6 +21,6 @@ public enum OperatorCountry {
     }
 
     public String getCode() {
-        return code;
+        return "\"OperatorCountry\"" + " \"" + code + "\",";
     }
 }

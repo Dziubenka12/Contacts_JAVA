@@ -45,13 +45,13 @@ public class Contact {
     public void setEmail(String email){
         this.email = email;
     }
-    public String  getAddress() {
-        return address.getAddressFull();
+    public Address  getAddress() {
+        return address;
     }
     public void setAddress(Address address) {
         this.address = address;
     }
     public String toString(){
-        return firstName + " " + name + " " + getPhone() + " " + email + " " + getAddress();
+        return "{\"firstName\":" + " \"" + firstName + "\"," + " \"name\":" + " \"" + name + "\"," + getPhone() + " \"email\":" + " \"" + email + "\"," + " " + getAddress() + "}";
     }
 }

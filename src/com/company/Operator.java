@@ -18,6 +18,6 @@ public enum Operator {
     }
 
     public String getCode() {
-        return code;
+        return " \"" + code + "\"";
     }
 }
