@@ -11,6 +11,6 @@ public class HomePhone implements Phone{
 
     @Override
     public String getPhoneNumber() {
-        return " \"phones\":[ {" + countryCode.getCode() + "\"mobPhone\":" + " \"" + homePhone + "\"}],";
+        return " \"phones\":[ {" + countryCode.getCode() + "\"homePhone\":" + " \"" + homePhone + "\"}],";
     }
 }
