@@ -1,0 +1,5 @@
+{
+  "title": "Title of the book",
+  "authors": [{"name":  "Pasha", "surname":  "Karalenak"}, {}, {}],
+  "numberOfPages": 10
+}
