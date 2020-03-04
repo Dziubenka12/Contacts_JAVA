@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<table class="table">
+    <thead class="thead-dark">
+    <th scope="col">First name</th>
+    <th scope="col">Name</th>
+    <th scope="col">Phones</th>
+    <th scope="col">Email</th>
+    <th scope="col">Address</th>
+    </thead>
+    <tr th:each="contact : ${contacts}">
+        <td th:text="${contact.firstName}"></td>
+        <td th:text="${contact.name}"></td>
+        <!--<td th:text="${contact.phones}"></td>-->
+
+        <td>
+            <table >
+                <tr th:each="phone : ${contact.phoneList}">
+                    <td th:text="${phone.countryCode}"></td>
+                    <td th:text="${phone.operator}"></td>
+                    <td th:text="${phone.mobPhone}"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table border=0>
+                <tr th:each="email : ${email}">
+                    <td th:text="${email.email}"></td>
+                </tr>
+            </table>
+        </td>
+
+        <!--<td th:text="${contact.email}"></td>-->
+        <!--<td th:text="${contact.address}"></td>-->
+
+
+        <td>
+            <table >
+                <tr th:each="address :${address}">
+                    <td th:text="${address.country}"></td>
+                    <!--<td th:text="${address.city}"></td>
+                    <td th:text="${address.street}"></td>-->
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,35 @@
+package com.example.demo.dao.impl;
+
+import com.example.demo.dao.ContactsDAOService;
+import com.example.demo.dao.mapper.ContactsMapping;
+import com.example.demo.dao.MobPhoneDAOService;
+import com.example.demo.model.Contact;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ContactDAOServiceImpl implements ContactsDAOService {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private MobPhoneDAOService mobPhoneDAOService;
+
+    @Override
+    public List<Contact> getAllContacts() {
+        String sqlQuery = "SELECT * FROM contacts";
+        RowMapper<Contact> rowMapper = new ContactsMapping(mobPhoneDAOService);
+        return jdbcTemplate.query(sqlQuery, rowMapper);
+    }
+
+    @Override
+    public List<Contact> getAllContactByContactId(Long contactId) {
+        String sqlQuery = "SELECT * FROM contacts WHERE contact_id = " + contactId;
+        RowMapper<Contact> rowMapper = new ContactsMapping(mobPhoneDAOService);
+        return jdbcTemplate.query(sqlQuery, rowMapper);
+    }
+}

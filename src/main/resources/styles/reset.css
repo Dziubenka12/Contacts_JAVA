@@ -1,0 +1,14 @@
+/*
+.table td{
+    border-top: 0 !important;
+}
+.table th{
+    border-top: 0 !important;
+}
+*/
+
+.table {
+    th, td {
+    border-top: 0;
+    }
+}
