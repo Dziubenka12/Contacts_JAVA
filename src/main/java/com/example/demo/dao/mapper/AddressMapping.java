@@ -15,7 +15,8 @@ public class AddressMapping implements RowMapper {
         address.setCity(resultSet.getString("city"));
         address.setStreet(resultSet.getString("street"));
         address.setHouse(resultSet.getString("house"));
-        address.setApartment(resultSet.getInt("apartment"));
+        address.setApartment(resultSet.getInt("appartament"));
+        /*address.setApartment(resultSet.getInt("apartment"));*/
         return address;
     }
 }

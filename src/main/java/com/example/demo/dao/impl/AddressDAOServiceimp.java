@@ -6,9 +6,11 @@ import com.example.demo.model.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AddressDAOServiceimp implements AddressDAOService {
 
     @Autowired
@@ -16,8 +18,8 @@ public class AddressDAOServiceimp implements AddressDAOService {
 
     @Override
     public List<Address> getAllAddressByContactId(Long contactId) {
-        /*String sqlQuery = "SELECT * FROM address WHERE contact_id = " + contactId;*/
-        String sqlQuery = "SELECT * FROM address";
+        String sqlQuery = "SELECT * FROM address WHERE contact_id = " + contactId;
+        /*String sqlQuery = "SELECT * FROM address";*/
         RowMapper<Address> rowMapper = new AddressMapping();
         return jdbcTemplate.query(sqlQuery, rowMapper);
     }

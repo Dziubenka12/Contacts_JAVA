@@ -11,10 +11,18 @@
     <th scope="col">First name</th>
     <th scope="col">Name</th>
     </thead>
+
+
+
+    <!--<a href="index.html">-->
     <tr th:each="contact : ${contacts}">
         <td th:text="${contact.firstName}"></td>
         <td th:text="${contact.name}"></td>
     </tr>
+    <!--</a>-->
+
+
+
 </table>
 </body>
 </html>

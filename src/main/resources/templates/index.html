@@ -14,7 +14,7 @@
             <th scope="col">Email</th>
             <th scope="col">Address</th>
         </thead>
-        <tr th:each="contact : ${contacts}">
+        <div><a href="dog.html"><tr th:each="contact : ${contacts}">
             <td th:text="${contact.firstName}"></td>
             <td th:text="${contact.name}"></td>
             <!--<td th:text="${contact.phones}"></td>-->
@@ -51,6 +51,7 @@
             <!--<td th:text="${contact.email}"></td>-->
             <td th:text="${contact.address}"></td>
         </tr>
+        </a></div>
     </table>
 </body>
 </html>

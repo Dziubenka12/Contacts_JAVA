@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.AddressDAOService;
 import com.example.demo.dao.ContactsDAOService;
 import com.example.demo.dao.EmailDAOService;
 import com.example.demo.dao.MobPhoneDAOService;
@@ -26,12 +27,16 @@ public class ContactController {
     @Autowired
     public EmailDAOService emailDAOService;
 
+    @Autowired
+    public AddressDAOService addressDAOService;
+
     @GetMapping
     public String getHtml (@PathVariable Long id, Model model){
         List<Contact> contacts = contactsDAOService.getAllContactByContactId(id);
         model.addAttribute("contacts", contacts);
         model.addAttribute(mobPhoneDAOService.getAllMobPhonesByContactId(id));
         model.addAllAttributes(emailDAOService.getAllEmailByContactId(id));
+        model.addAllAttributes(addressDAOService.getAllAddressByContactId(id));
         return "contact";
     }
 }
