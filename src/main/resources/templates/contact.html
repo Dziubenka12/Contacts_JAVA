@@ -44,8 +44,10 @@
             <table >
                 <tr th:each="address :${address}">
                     <td th:text="${address.country}"></td>
-                    <!--<td th:text="${address.city}"></td>
-                    <td th:text="${address.street}"></td>-->
+                    <td th:text="${address.city}"></td>
+                    <td th:text="${address.street}"></td>
+                    <td th:text="${address.house}"></td>
+                    <td th:text="${address.apartment}"></td>
                 </tr>
             </table>
         </td>

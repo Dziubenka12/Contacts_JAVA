@@ -31,10 +31,9 @@ public class ContactsMapping implements RowMapper<Contact> {
 */
             contact.addPhone(mobPhone);
         }
-
-
         contact.setFirstName(resultSet.getString("firstName"));
         contact.setName(resultSet.getString("name"));
+        contact.setId(resultSet.getInt("CONTACT_ID"));
         return contact;
     }
 }

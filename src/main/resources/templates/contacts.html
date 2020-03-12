@@ -13,16 +13,10 @@
     </thead>
 
 
-
-    <!--<a href="index.html">-->
-    <tr th:each="contact : ${contacts}">
+    <tr th:each="contact : ${contacts}"><a href="index.html" th:href="@{/contact/{id}(id=${contact.id})}">
         <td th:text="${contact.firstName}"></td>
-        <td th:text="${contact.name}"></td>
+        <td th:text="${contact.name}"></td></a>
     </tr>
-    <!--</a>-->
-
-
-
 </table>
 </body>
 </html>

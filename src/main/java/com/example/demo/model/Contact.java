@@ -9,6 +9,7 @@ public class Contact {
     private ArrayList<Phone> phones = new ArrayList<>();
     private ArrayList<Email> emails = new ArrayList<>();
     private Address address;
+    private int id;
 
     public Contact(){
     }
@@ -59,7 +60,6 @@ public class Contact {
         }
         return " \"phones\":[ " + phonesString + " ],";
     }
-
     public List<Phone> getPhoneList() {
         return this.phones;
     }
@@ -85,6 +85,12 @@ public class Contact {
     }
     public void setAddress(Address address) {
         this.address = address;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
     public String toString(){
         return "{\"firstName\":" + " \"" + firstName + "\"," + " \"name\":" + " \"" + name + "\"," + getPhones() + " \"email\":[" + " \"" + getEmail() + "\"]," + " " + getAddress() + "}";
