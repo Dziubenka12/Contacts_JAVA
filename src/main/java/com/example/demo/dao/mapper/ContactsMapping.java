@@ -1,10 +1,8 @@
 package com.example.demo.dao.mapper;
 
+import com.example.demo.dao.EmailDAOService;
 import com.example.demo.dao.MobPhoneDAOService;
-import com.example.demo.model.Contact;
-import com.example.demo.model.Email;
-import com.example.demo.model.MobPhone;
-import com.example.demo.model.Operator;
+import com.example.demo.model.*;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -14,6 +12,7 @@ import java.util.List;
 public class ContactsMapping implements RowMapper<Contact> {
 
     private MobPhoneDAOService mobPhoneDAOService;
+    private EmailDAOService emailDAOService;
 
     public ContactsMapping(MobPhoneDAOService mobPhoneDAOService) {
         this.mobPhoneDAOService = mobPhoneDAOService;
@@ -24,6 +23,9 @@ public class ContactsMapping implements RowMapper<Contact> {
         Contact contact = new Contact();
         Long id = resultSet.getLong("CONTACT_ID");
         List<MobPhone> mobPhones = mobPhoneDAOService.getAllMobPhonesByContactId(id);
+
+        /*List<Address> addresses = mobPhoneDAOService.getAllMobPhonesByContactId(id);*/
+
         for(MobPhone mobPhone : mobPhones) {
             /*mobPhone.setCountryCode(resultSet.getString("countryCode"));
             mobPhone.setMobPhone(resultSet.getString("mobPhone"));

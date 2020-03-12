@@ -12,11 +12,21 @@
     <th scope="col">Name</th>
     </thead>
 
+    <tbody>
 
-    <tr th:each="contact : ${contacts}"><a href="index.html" th:href="@{/contact/{id}(id=${contact.id})}">
-        <td th:text="${contact.firstName}"></td>
-        <td th:text="${contact.name}"></td></a>
-    </tr>
+        <tr th:each="contact : ${contacts}">
+
+            <td th:text="${contact.firstName}">
+            </td>
+            <td th:text="${contact.name}"></td>
+            <td>
+                <a href="index.html" th:href="@{/contact/{id}(id=${contact.id})}">Link</a>
+            </td>
+        </tr>
+
+    </tbody>
+
+
 </table>
 </body>
 </html>

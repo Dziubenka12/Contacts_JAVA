@@ -3,6 +3,7 @@ package com.example.demo.dao.impl;
 import com.example.demo.dao.ContactsDAOService;
 import com.example.demo.dao.mapper.ContactsMapping;
 import com.example.demo.dao.MobPhoneDAOService;
+import com.example.demo.exceptions.ContactNotFoundException;
 import com.example.demo.model.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -32,4 +33,18 @@ public class ContactDAOServiceImpl implements ContactsDAOService {
         RowMapper<Contact> rowMapper = new ContactsMapping(mobPhoneDAOService);
         return jdbcTemplate.query(sqlQuery, rowMapper);
     }
+
+    @Override
+    public Contact getContactById(Long contactId) throws ContactNotFoundException {
+        String sqlQuery = "SELECT * FROM contacts WHERE contact_id = " + contactId;
+        RowMapper<Contact> rowMapper = new ContactsMapping(mobPhoneDAOService);
+        Contact contact = jdbcTemplate.queryForObject(sqlQuery, rowMapper);
+        if (contact != null) {
+            return contact;
+        } else {
+            throw new ContactNotFoundException("Contact with id " + contactId + " not found");
+        }
+    }
+
+
 }
