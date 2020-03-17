@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EmailDAOServiceimpl implements EmailDAOService {
+public class EmailDAOServiceImpl implements EmailDAOService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

@@ -1,5 +1,7 @@
 package com.example.demo.dao.mapper;
 
+import com.example.demo.dao.AddressDAOService;
+import com.example.demo.dao.ContactsDAOService;
 import com.example.demo.dao.EmailDAOService;
 import com.example.demo.dao.MobPhoneDAOService;
 import com.example.demo.model.*;
@@ -13,9 +15,22 @@ public class ContactsMapping implements RowMapper<Contact> {
 
     private MobPhoneDAOService mobPhoneDAOService;
     private EmailDAOService emailDAOService;
+    private AddressDAOService addressDAOService;
 
     public ContactsMapping(MobPhoneDAOService mobPhoneDAOService) {
         this.mobPhoneDAOService = mobPhoneDAOService;
+    }
+
+
+    public ContactsMapping(MobPhoneDAOService mobPhoneDAOService, EmailDAOService emailDAOService) {
+        this.mobPhoneDAOService = mobPhoneDAOService;
+        this.emailDAOService = emailDAOService;
+    }
+
+    public ContactsMapping(MobPhoneDAOService mobPhoneDAOService, EmailDAOService emailDAOService, AddressDAOService addressDAOService) {
+        this.mobPhoneDAOService = mobPhoneDAOService;
+        this.emailDAOService = emailDAOService;
+        this.addressDAOService = addressDAOService;
     }
 
     @Override
@@ -23,15 +38,16 @@ public class ContactsMapping implements RowMapper<Contact> {
         Contact contact = new Contact();
         Long id = resultSet.getLong("CONTACT_ID");
         List<MobPhone> mobPhones = mobPhoneDAOService.getAllMobPhonesByContactId(id);
-
-        /*List<Address> addresses = mobPhoneDAOService.getAllMobPhonesByContactId(id);*/
-
         for(MobPhone mobPhone : mobPhones) {
-            /*mobPhone.setCountryCode(resultSet.getString("countryCode"));
-            mobPhone.setMobPhone(resultSet.getString("mobPhone"));
-            mobPhone.setOperator(Operator.valueOf(resultSet.getString("operator")));
-*/
             contact.addPhone(mobPhone);
+        }
+        List<Email> emails = emailDAOService.getAllEmailByContactId(id);
+        for(Email email : emails){
+            contact.addEmail(email);
+        }
+        List<Address> addresses = addressDAOService.getAllAddressByContactId(id);
+        for(Address address : addresses){
+            contact.setAddress(address);
         }
         contact.setFirstName(resultSet.getString("firstName"));
         contact.setName(resultSet.getString("name"));

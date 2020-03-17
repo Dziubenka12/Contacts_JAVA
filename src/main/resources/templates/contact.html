@@ -29,8 +29,13 @@
             </table>
         </td>
         <td>
-            <table border=0>
+            <!--<table border=0>
                 <tr th:each="email : ${email}">
+                    <td th:text="${email.email}"></td>
+                </tr>
+            </table>-->
+            <table>
+                <tr th:each="email : ${contact}">
                     <td th:text="${email.email}"></td>
                 </tr>
             </table>

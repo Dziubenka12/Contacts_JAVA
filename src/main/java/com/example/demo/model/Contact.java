@@ -72,7 +72,8 @@ public class Contact {
             Email email = emails.get(j);
             emailString += email.toString();
         }
-        return  " \"emails\":[ " + emailString + " ],";
+        return emailString;
+        /*return  " \"emails\":[ " + emailString + " ],";*/
     }
     public void addEmail(Email email){
         this.emails.add(email);

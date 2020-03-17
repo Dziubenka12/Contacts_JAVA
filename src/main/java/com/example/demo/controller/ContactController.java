@@ -35,13 +35,13 @@ public class ContactController {
     public String getHtml (@PathVariable Long id, Model model) {
         /*List<Contact> contacts = contactsDAOService.getAllContactByContactId(id);
         model.addAttribute("contacts", contacts);*/
-        try {
+        /*try {*/
             Contact contact = contactsDAOService.getContactById(id);
             model.addAttribute("contact", contact);
-        } catch (ContactNotFoundException e) {
+        /*} catch (ContactNotFoundException e) {
             model.addAttribute("message", e.getMessage());
             return "error";
-        }
+        }*/
         /*model.addAttribute(mobPhoneDAOService.getAllMobPhonesByContactId(id));
         model.addAllAttributes(emailDAOService.getAllEmailByContactId(id));
         model.addAllAttributes(addressDAOService.getAllAddressByContactId(id));*/

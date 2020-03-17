@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AddressDAOServiceimp implements AddressDAOService {
+public class AddressDAOServiceImpl implements AddressDAOService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

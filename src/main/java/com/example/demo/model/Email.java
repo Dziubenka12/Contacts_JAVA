@@ -16,4 +16,7 @@ public class Email {
                 '}';*/
         return email;
     }
+    public String toString(){
+        return email;
+    }
 }

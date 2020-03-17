@@ -11,9 +11,9 @@ public interface ContactsDAOService {
 
     List<Contact> getAllContactByContactId(Long contactId);
 
-    Contact getContactById(Long contactId) throws ContactNotFoundException;
+    Contact getContactById(Long contactId)/* throws ContactNotFoundException*/;
 
-    //void deleteContactById(Long contactId);
+    void deleteContactById(Long contactId);
 
-    //Contact updateContact();
+    Contact updateContact(Long contactId);
 }
