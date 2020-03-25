@@ -1,3 +1,59 @@
+package com.example.demo.controller;
+
+import com.example.demo.dao.ContactRepository;
+import com.example.demo.dao.ContactService;
+import com.example.demo.exceptions.ContactNotFoundException;
+import com.example.demo.model.Contact;
+import com.example.demo.model.ContactEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@RestController
+@RequestMapping("/contacts")
+public class ContactsController {
+
+    @Autowired
+    private ContactRepository contactRepository;
+    @Autowired
+    private ContactService contactService;
+
+    /*@PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createContact(@Valid @RequestBody Contact contact) {
+        *//*contactService.createContact(
+                contact.getFirstName(),
+                contact.getName(),
+                contact.getEmail()
+
+        );*//*
+        contactRepository.save(contact);
+
+    }*/
+
+    @GetMapping
+    public List<ContactEntity> getContacts() {
+        return contactRepository.findAll();
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 package com.example.demo.controller;
 
@@ -18,13 +74,14 @@ public class ContactsController {
 
     @GetMapping
     public String getContacts(Model model) {
-        */
-/*Contact contact = new Contact("Pasha", "26");
+
+
+Contact contact = new Contact("Pasha", "26");
         List<String> list = Arrays.asList("123", "Text", "hhh");
         model.addAttribute("message", "Hello contacts");
         model.addAttribute("mylist", list);
         model.addAttribute("contact1", contact);
-        return "contacts";*//*
+        return "contacts";
 
         final String DB_URL = "jdbc:mysql://localhost:3306/bdcontacts2?serverTimezone=UTC";
         final String USER = "root";
@@ -59,5 +116,6 @@ public class ContactsController {
     }
     //return "contacts";
 }
+
 
 */

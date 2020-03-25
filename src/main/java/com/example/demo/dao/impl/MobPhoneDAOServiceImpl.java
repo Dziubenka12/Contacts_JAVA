@@ -7,6 +7,7 @@ import com.example.demo.model.Operator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Service;
 
 import javax.swing.*;
@@ -42,6 +43,14 @@ public class MobPhoneDAOServiceImpl implements MobPhoneDAOService {
         String sqlQuery = "SELECT * FROM mobphone WHERE contact_id = " + contactId;
         RowMapper<MobPhone> rowMapper = new MobPhoneMapper();
         return jdbcTemplate.query(sqlQuery, rowMapper);
+    }
+
+    @Override
+    public void deleteMobPhoneById(Long contactId) {
+        String sqlDeleteContact = "delete from mobPhone where contact_id = ?";
+        MapSqlParameterSource mobPhone = new MapSqlParameterSource();
+        mobPhone.addValue("contactId", contactId);
+        jdbcTemplate.update(sqlDeleteContact, contactId);
     }
 }
 /*      MobPhone mobPhone = new MobPhone();

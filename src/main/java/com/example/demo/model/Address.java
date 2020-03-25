@@ -1,11 +1,25 @@
 package com.example.demo.model;
 
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "address")
 public class Address {
+    @Id
+    @GeneratedValue
+    private Integer ADDRESS_ID;
+    @Column
+    @NotNull
+    @Enumerated(EnumType.STRING)
     private Country country;
     private String city;
     private String street;
     private String house;
     private int apartment;
+    @OneToOne(optional = false, mappedBy="address")
+    private ContactEntity contactEntity;
 
     public Address() {
     }
@@ -54,7 +68,15 @@ public class Address {
         this.apartment = apartment;
     }
 
-    public String toString(){
-        return " \"address\": {" + " \"country\":" + " \"" + country + "\"," + " " + "\"city\":" + " \"" + city + "\"," + " " + "\"street\":" + " \"" + street + "\"," + " " + "\"house\":" + " \"" + house + "\"," + " " + "\"apartment\":" + " \"" + apartment + "\"}";
+    public Integer getADDRESS_ID() {
+        return ADDRESS_ID;
     }
+
+    public void setADDRESS_ID(Integer ADDRESS_ID) {
+        this.ADDRESS_ID = ADDRESS_ID;
+    }
+
+    /*public String toString(){
+        return " \"address\": {" + " \"country\":" + " \"" + country + "\"," + " " + "\"city\":" + " \"" + city + "\"," + " " + "\"street\":" + " \"" + street + "\"," + " " + "\"house\":" + " \"" + house + "\"," + " " + "\"apartment\":" + " \"" + apartment + "\"}";
+    }*/
 }

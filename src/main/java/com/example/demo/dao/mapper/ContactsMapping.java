@@ -1,7 +1,6 @@
 package com.example.demo.dao.mapper;
 
 import com.example.demo.dao.AddressDAOService;
-import com.example.demo.dao.ContactsDAOService;
 import com.example.demo.dao.EmailDAOService;
 import com.example.demo.dao.MobPhoneDAOService;
 import com.example.demo.model.*;
@@ -37,21 +36,23 @@ public class ContactsMapping implements RowMapper<Contact> {
     public Contact mapRow(ResultSet resultSet, int i) throws SQLException {
         Contact contact = new Contact();
         Long id = resultSet.getLong("CONTACT_ID");
-        List<MobPhone> mobPhones = mobPhoneDAOService.getAllMobPhonesByContactId(id);
-        for(MobPhone mobPhone : mobPhones) {
-            contact.addPhone(mobPhone);
+        if (mobPhoneDAOService != null) {
+            List<MobPhone> mobPhones = mobPhoneDAOService.getAllMobPhonesByContactId(id);
+            for (MobPhone mobPhone : mobPhones) {
+                contact.addPhone(mobPhone);
+            }
         }
         List<Email> emails = emailDAOService.getAllEmailByContactId(id);
-        for(Email email : emails){
+        for (Email email : emails) {
             contact.addEmail(email);
         }
         List<Address> addresses = addressDAOService.getAllAddressByContactId(id);
-        for(Address address : addresses){
+        for (Address address : addresses) {
             contact.setAddress(address);
         }
         contact.setFirstName(resultSet.getString("firstName"));
         contact.setName(resultSet.getString("name"));
-        contact.setId(resultSet.getInt("CONTACT_ID"));
+        contact.setCONTACT_ID(resultSet.getInt("CONTACT_ID"));
         return contact;
     }
 }

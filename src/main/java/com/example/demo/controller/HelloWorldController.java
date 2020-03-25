@@ -6,16 +6,16 @@ import com.example.demo.dao.MobPhoneDAOService;
 import com.example.demo.dao.mapper.MobPhoneMapper;
 import com.example.demo.model.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/contacts")
+@RequestMapping("/contacts111")
 public class HelloWorldController {
 
     @Autowired
@@ -38,4 +38,19 @@ public class HelloWorldController {
 
         return "contacts";
     }
+
+
+    /*@PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addContact(@RequestBody Contact contact) {
+        contactsDAOService.addContact(
+                contact.getFirstName(),
+                contact.getName(),
+                contact.getEmail()
+        );
+    }*/
+    /*@PutMapping
+    public void addContact(Contact contact){
+        contactsDAOService.addContact(contact);
+    }*/
 }

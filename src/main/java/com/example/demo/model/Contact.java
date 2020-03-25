@@ -1,21 +1,39 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
-
+/*@Entity
+@Table(name = "contacts")*/
 public class Contact {
     private String firstName;
+    /*@NotBlank*/
     private String name;
     private ArrayList<Phone> phones = new ArrayList<>();
     private ArrayList<Email> emails = new ArrayList<>();
+    /*@OneToOne*/
     private Address address;
-    private int id;
+    /*@Id
+    @GeneratedValue*/
+    private Integer CONTACT_ID;
 
-    public Contact(){
+    /*public Contact() {
+        super();
     }
+
+    *//*public Contact(){
+    }*//*
 
     public Contact(MobPhone mobPhone){
 
+    }
+
+
+    public Contact(String firstName, String name, ArrayList<Email> emails) {
+        this.firstName = firstName;
+        this.name = name;
+        this.emails = emails;
     }
 
     public Contact(String name, Phone phone){
@@ -38,7 +56,7 @@ public class Contact {
         this.phones.add(phone);
         this.emails.add(email);
         this.address = address;
-    }
+    }*/
 
     public String getFirstName(){
         return firstName;
@@ -72,26 +90,29 @@ public class Contact {
             Email email = emails.get(j);
             emailString += email.toString();
         }
+        /*return emailString;*/
         return emailString;
-        /*return  " \"emails\":[ " + emailString + " ],";*/
+    }
+    public List<Email> getEmails() {
+        return this.emails;
     }
     public void addEmail(Email email){
         this.emails.add(email);
     }
-    public String  getAddress() {
-        if (this.address == null)
+    public Address  getAddress() {
+        /*if (this.address == null)
             return " \"address\":" + null;
-        else
-        return address.toString();
+        else*/
+        return address;
     }
     public void setAddress(Address address) {
         this.address = address;
     }
-    public int getId() {
-        return id;
+    public int getId(Long id) {
+        return this.CONTACT_ID;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setCONTACT_ID(int CONTACT_ID) {
+        this.CONTACT_ID = CONTACT_ID;
     }
     public String toString(){
         return "{\"firstName\":" + " \"" + firstName + "\"," + " \"name\":" + " \"" + name + "\"," + getPhones() + " \"email\":[" + " \"" + getEmail() + "\"]," + " " + getAddress() + "}";

@@ -1,23 +1,25 @@
 package com.example.demo.controller;
 
-import com.example.demo.dao.AddressDAOService;
-import com.example.demo.dao.ContactsDAOService;
-import com.example.demo.dao.EmailDAOService;
-import com.example.demo.dao.MobPhoneDAOService;
+import com.example.demo.dao.*;
 import com.example.demo.exceptions.ContactNotFoundException;
 import com.example.demo.model.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
-@Controller
-@RequestMapping("/contact/{id}")
+import static javax.swing.UIManager.getInt;
+
+@RestController
+@RequestMapping/*("/contact/{id}")*/
 public class ContactController {
+
+    @Autowired
+    private ContactService contactService;
 
     @Autowired
     private ContactsDAOService contactsDAOService;
@@ -32,19 +34,41 @@ public class ContactController {
     public AddressDAOService addressDAOService;
 
     @GetMapping
-    public String getHtml (@PathVariable Long id, Model model) {
+    public Contact getContact (@PathVariable Long id) {
         /*List<Contact> contacts = contactsDAOService.getAllContactByContactId(id);
         model.addAttribute("contacts", contacts);*/
-        /*try {*/
-            Contact contact = contactsDAOService.getContactById(id);
-            model.addAttribute("contact", contact);
-        /*} catch (ContactNotFoundException e) {
-            model.addAttribute("message", e.getMessage());
-            return "error";
-        }*/
+        try {
+            return contactsDAOService.getContactById(id);
+            //model.addAttribute("contact", contact);
+        } catch (ContactNotFoundException e) {
+            //model.addAttribute("message", e.getMessage());
+            return null;
+        }
         /*model.addAttribute(mobPhoneDAOService.getAllMobPhonesByContactId(id));
         model.addAllAttributes(emailDAOService.getAllEmailByContactId(id));
         model.addAllAttributes(addressDAOService.getAllAddressByContactId(id));*/
-        return "contact";
+        //return contact;
     }
+
+    @DeleteMapping
+    public void deleteContact(@PathVariable Long id) {
+        contactsDAOService.deleteContactById(id);
+    }
+
+    /*@PutMapping
+    public void addContact(Contact contact) {
+        contactsDAOService.addContact(contact);
+    }*/
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createContact(@RequestBody Contact contact) {
+
+            contactService.createContact(
+                contact.getFirstName(),
+                contact.getName(),
+                contact.getEmail()
+        );
+    }
+
 }

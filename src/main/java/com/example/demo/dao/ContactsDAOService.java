@@ -11,9 +11,13 @@ public interface ContactsDAOService {
 
     List<Contact> getAllContactByContactId(Long contactId);
 
-    Contact getContactById(Long contactId)/* throws ContactNotFoundException*/;
+    Contact getContactById(Long contactId) throws ContactNotFoundException;
 
     void deleteContactById(Long contactId);
 
-    Contact updateContact(Long contactId);
+    /*void addContact(Contact contact);*/
+
+    void addContact(String firstName, String name, String email);
+
+    /* Contact updateContact(Long contactId);*/
 }

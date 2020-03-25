@@ -35,8 +35,8 @@
                 </tr>
             </table>-->
             <table>
-                <tr th:each="email : ${contact}">
-                    <td th:text="${email.email}"></td>
+                <tr th:each="email : ${contact.email}">
+                    <td th:text="${email}"></td>
                 </tr>
             </table>
         </td>
@@ -47,7 +47,7 @@
 
         <td>
             <table >
-                <tr th:each="address :${address}">
+                <tr th:each="address :${contact.address}">
                     <td th:text="${address.country}"></td>
                     <td th:text="${address.city}"></td>
                     <td th:text="${address.street}"></td>

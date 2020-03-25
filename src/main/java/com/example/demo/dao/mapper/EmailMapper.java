@@ -20,9 +20,9 @@ public class EmailMapper implements RowMapper<Email> {
     @Override
     public Email mapRow(ResultSet resultSet, int i) throws SQLException {
         Email email = new Email();
-        email.setEmail(resultSet.getString("email"));
+        /*email.setEmail(resultSet.getString("email"));
         //email.setEmail(resultSet.getString("Email"));
-        /*List<Email> emails = emailDAOService.getAllEmail();
+        *//*List<Email> emails = emailDAOService.getAllEmail();
         for (Email email: emails) {
             email.getEmail(email);
         }*/

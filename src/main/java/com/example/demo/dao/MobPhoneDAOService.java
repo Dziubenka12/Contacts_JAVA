@@ -10,4 +10,6 @@ public interface MobPhoneDAOService {
     List<MobPhone> getAllMobPhones();
 
     List<MobPhone> getAllMobPhonesByContactId(Long contactId);
+
+    void deleteMobPhoneById(Long contactId);
 }
