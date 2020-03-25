@@ -4,15 +4,28 @@ import javax.persistence.*;
 import java.util.Set;
 
 
-/*@Entity*/
-/*@Table(name = "emails")*/
+@Entity
+@Table(name = "emails")
 public class Email {
 
-    /*@Id
-    @GeneratedValue*/
+    @Id
+    @GeneratedValue
+    @Column(name = "EMAILS_ID")
     private Integer EMAILS_ID;
-    /*@ManyToOne*//*(optional=false, cascade=CascadeType.ALL)*/
-    /*@JoinColumn (name="emails_id")*/
+    @ManyToOne/*(optional=false, cascade=CascadeType.ALL)*/(fetch = FetchType.LAZY)
+    @JoinColumn (name="CONTACT_ID")
+    public ContactEntity contactEntity;
+
+
+    /*public ContactEntity getContactEntity() {
+        return contactEntity;
+    }
+
+    public void setContactEntity(ContactEntity contactEntity) {
+        this.contactEntity = contactEntity;
+    }*/
+    @Column
+    private String email;
     private Contact contact;
 
 
@@ -20,7 +33,7 @@ public class Email {
 
     /*@OneToMany(fetch = FetchType.EAGER, mappedBy = "emails")
     private Set<ContactEntity> contactEntity;*/
-    private String email;
+
     /*private Set<Author> users;*/
     public String getEmail() {
         return email;

@@ -1,8 +1,9 @@
 package com.example.demo.model;
 
-import com.sun.istack.NotNull;
+/*import com.sun.istack.NotNull;*/
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "address")
