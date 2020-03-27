@@ -38,9 +38,9 @@ public class ContactsMapping implements RowMapper<Contact> {
         Long id = resultSet.getLong("CONTACT_ID");
         if (mobPhoneDAOService != null) {
             List<MobPhone> mobPhones = mobPhoneDAOService.getAllMobPhonesByContactId(id);
-            for (MobPhone mobPhone : mobPhones) {
+            /*for (MobPhone mobPhone : mobPhones) {
                 contact.addPhone(mobPhone);
-            }
+            }*/
         }
         List<Email> emails = emailDAOService.getAllEmailByContactId(id);
         for (Email email : emails) {
@@ -52,7 +52,7 @@ public class ContactsMapping implements RowMapper<Contact> {
         }
         contact.setFirstName(resultSet.getString("firstName"));
         contact.setName(resultSet.getString("name"));
-        contact.setCONTACT_ID(resultSet.getInt("CONTACT_ID"));
+        contact.setId(resultSet.getInt("CONTACT_ID"));
         return contact;
     }
 }

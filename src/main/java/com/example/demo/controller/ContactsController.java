@@ -1,17 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.ContactRepository;
-import com.example.demo.dao.ContactService;
-import com.example.demo.exceptions.ContactNotFoundException;
-import com.example.demo.model.Contact;
 import com.example.demo.model.ContactEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/contacts")
@@ -19,8 +15,44 @@ public class ContactsController {
 
     @Autowired
     private ContactRepository contactRepository;
-    @Autowired
-    private ContactService contactService;
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createContact(@Valid @RequestBody ContactEntity contact){
+        contactRepository.save(contact);
+    }
+
+    @GetMapping
+    public List<ContactEntity> getContacts() {
+        return contactRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<ContactEntity> getContactById(@PathVariable(value = "id") Integer id){
+        return contactRepository.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteContactId(@PathVariable(value = "id") Integer id){
+        contactRepository.deleteById(id);
+    }
+
+
+    /*@GetMapping("/{id}")
+    public Optional<ContactEntity> getContactById(@PathVariable(value = "id") Integer id) *//*throws BookNotFoundException*//* {
+        return contactRepository.findById(id);
+               *//* .orElseThrow(() -> new BookNotFoundException(bookId));*//*
+    }*/
+    /*@DeleteMapping("/{id}"*//*value = "id"*//*)
+    public ResponseEntity deleteContactId(@PathVariable*//*(value = "id")*//* Integer id){
+        *//*ContactEntity contact = contactRepository.deleteById(id);*//*
+        contactRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }*/
+
+
+    /*@Autowired
+    private ContactService contactService;*/
 
     /*@PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -35,10 +67,6 @@ public class ContactsController {
 
     }*/
 
-    @GetMapping
-    public List<ContactEntity> getContacts() {
-        return contactRepository.findAll();
-    }
 
 
 }

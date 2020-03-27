@@ -4,21 +4,27 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
-/*@Entity
-@Table(name = "contacts")*/
+/*@Entity*/
+//@Table(name = "contacts")
 public class Contact {
+    /*@Id
+    @GeneratedValue*/
+    private Integer id;
     private String firstName;
     /*@NotBlank*/
     private String name;
-    private ArrayList<Phone> phones = new ArrayList<>();
-    private ArrayList<Email> emails = new ArrayList<>();
-    /*@OneToOne*/
+    /*@OneToMany(cascade=CascadeType.ALL)*/
+    /*private ArrayList<Phone> phones = new ArrayList<>();*/
+    /*@OneToMany(cascade=CascadeType.ALL)*/
+    private List<Email> emails;
+    /*@OneToOne(cascade=CascadeType.ALL)*/
     private Address address;
-    /*@Id
-    @GeneratedValue*/
-    private Integer CONTACT_ID;
 
-    /*public Contact() {
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
+    }
+
+/*public Contact() {
         super();
     }
 
@@ -70,7 +76,7 @@ public class Contact {
     public void setName(String name){
         this.name = name;
     }
-    public String getPhones() {
+    /*public String getPhones() {
         String phonesString = "";
         for (int i = 0; i < phones.size(); i++) {
             Phone phone = phones.get(i);
@@ -83,7 +89,7 @@ public class Contact {
     }
     public void addPhone(Phone phone){
         this.phones.add(phone);
-    }
+    }*/
     public String getEmail() {
         String emailString = "";
         for (int j = 0; j < emails.size(); j++) {
@@ -108,13 +114,21 @@ public class Contact {
     public void setAddress(Address address) {
         this.address = address;
     }
-    public int getId(Long id) {
-        return this.CONTACT_ID;
+
+    public Integer getId() {
+        return id;
     }
-    public void setCONTACT_ID(int CONTACT_ID) {
-        this.CONTACT_ID = CONTACT_ID;
+
+    public void setId(Integer id) {
+        this.id = id;
     }
-    public String toString(){
+
+    /*public String toString(){
         return "{\"firstName\":" + " \"" + firstName + "\"," + " \"name\":" + " \"" + name + "\"," + getPhones() + " \"email\":[" + " \"" + getEmail() + "\"]," + " " + getAddress() + "}";
+    }*/
+
+
+    public void setEmails(ArrayList<Email> emails) {
+        this.emails = emails;
     }
 }

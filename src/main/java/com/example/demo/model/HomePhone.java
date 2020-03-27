@@ -1,7 +1,13 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
+
+/*@Entity*/
 public class HomePhone implements Phone{
+    /*@Id
+    @GeneratedValue*/
     private String homePhone;
+    /*@Enumerated(EnumType.STRING)*/
     private OperatorCountry countryCode;
 
     public HomePhone() {

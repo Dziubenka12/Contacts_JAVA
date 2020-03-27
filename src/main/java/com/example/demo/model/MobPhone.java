@@ -1,7 +1,14 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
+
+/*@Entity*/
 public class MobPhone implements Phone {
+    /*@Id
+    @GeneratedValue*/
+    private Integer Id;
     private String mobPhone;
+    /*@Enumerated(EnumType.STRING)*/
     private Operator operator;
     private String countryCode;
 
@@ -12,6 +19,14 @@ public class MobPhone implements Phone {
         this.mobPhone = mobPhone;
         this.operator = operator;
         this.countryCode = countryCode;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
     }
 
     public String getMobPhone() {
